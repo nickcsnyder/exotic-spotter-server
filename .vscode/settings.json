@@ -1,0 +1,9 @@
+{
+    "eslint.codeAction.showDocumentation": {
+    
+        "enable": true
+    },
+    "cSpell.ignoreWords": [
+        "postgres"
+    ]
+}

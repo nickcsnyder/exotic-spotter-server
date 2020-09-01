@@ -1,0 +1,1 @@
+DROP TABLE IF EXISTS exotic_spotter_users CASCADE;
