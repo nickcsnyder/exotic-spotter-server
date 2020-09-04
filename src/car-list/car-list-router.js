@@ -1,7 +1,7 @@
 'use strict';
 const express = require('express');
 const CarListService = require('./car-list-service');
-
+const { requireAuth } = require('../middleware/jwt-auth');
 const carListRouter = express.Router();
 
 carListRouter
@@ -16,7 +16,7 @@ carListRouter
 
 carListRouter
   .route('/:car_id')
-  // .all(requireAuth)
+  .all(requireAuth)
   .all(checkCarExists)
   .get((req, res) => {
     res.json(CarListService.serializeCar(res.car));
@@ -34,7 +34,7 @@ async function checkCarExists(req, res, next) {
       })
     res.car = car
     next()
-  } 
+  }
   catch (error) {
     next(error)
   }

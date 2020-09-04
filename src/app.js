@@ -7,6 +7,7 @@ const helmet = require('helmet');
 const { NODE_ENV } = require('./config');
 const carListRouter = require('../src/car-list/car-list-router');
 
+
 const app = express();
 
 const morganOption = (NODE_ENV === 'production')
@@ -19,16 +20,12 @@ app.use(cors());
 
 app.use('/api/carlist', carListRouter);
 
-// app.get('/', (req, res) => {
-//   res.send('Hello, world!');
-// });
 
 app.use(function errorHandler(error, req, res, next) {
   let response;
   if (NODE_ENV === 'production') {
     response = { error: { message: 'server error' } };
   } else {
-    // eslint-disable-next-line no-console
     console.error(error);
     response = { message: error.message, error };
   }

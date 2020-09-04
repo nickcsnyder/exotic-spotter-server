@@ -6,17 +6,11 @@ const CarListService = {
   getAllCars(db) {
     return db
       .from('exotic_spotter_content')
-      .select(
-        'car_list.id',
-        'car_list.make',
-        'car_list.model',
-        'car_list.location',
-        'car_list.date_created'
-      );
+      .select();
   },
   getById(db, id) {
     return CarListService.getAllCars(db)
-      .where('car_list.id', id)
+      .where('exotic_spotter_content.id', id)
       .first();
   },
   serializeCars(cars) {
