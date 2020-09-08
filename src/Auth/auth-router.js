@@ -28,7 +28,7 @@ AuthRouter
           .then(compareMatch => {
             if (!compareMatch)
               return res.status(400).json({
-                error: 'Incorrect user name or password'
+                error: 'Incorrect user_name or password'
               });
             const sub = dbUser.user_name;
             const payload = { user_id: dbUser.id };

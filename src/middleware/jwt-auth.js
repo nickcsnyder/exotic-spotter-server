@@ -4,7 +4,7 @@ const AuthService = require('../Auth/auth-service');
 function requireAuth(req, res, next) {
   const authToken = req.get('Authorization') || '';
   if (!authToken.toLowerCase().startsWith('bearer')) {
-    return res.status(400).json({
+    return res.status(401).json({
       error: 'Missing bearer token'
     });
   } else {
@@ -18,7 +18,7 @@ function requireAuth(req, res, next) {
     )
       .then(user => {
         if (!user)
-          return res.status(400).json({
+          return res.status(401).json({
             error: 'Unauthorized request'
           });
         req.user = user;
